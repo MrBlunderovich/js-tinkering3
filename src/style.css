@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap");
 * {
   box-sizing: border-box;
   font-family: inherit;
@@ -7,4 +8,96 @@
 }
 body {
   background-color: #d3faff;
+  font-family: "Roboto", sans-serif;
+}
+header {
+  background-color: #7eceff;
+  height: 5rem;
+  box-shadow: 0 0 10px 0 #223a49;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 5rem;
+}
+
+.spinner {
+  margin-left: auto;
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: #d3faff;
+}
+.spinner::before,
+.spinner::after {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  margin-left: -1px;
+  display: block;
+  content: "";
+  width: 2px;
+  height: 2rem;
+  background-color: #223a49;
+  animation: clockwise 1s linear infinite;
+  transform-origin: center bottom;
+}
+.spinner::before {
+  height: 1rem;
+  background-color: #223a49;
+  animation: clockwise 2500ms linear infinite;
+  transform-origin: center bottom;
+}
+@keyframes clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.dropdown {
+  position: relative;
+  border: none;
+  height: 3rem;
+  padding: 0 2rem;
+  background-color: #223a49;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+  perspective: 1000px;
+}
+.dropdown__menu {
+  background-color: #223a49;
+  width: 100%;
+  list-style-type: none;
+  position: absolute;
+  left: 0;
+  top: 3rem;
+  box-shadow: 0 2px 15px 0 #00000077;
+  pointer-events: none;
+  opacity: 0;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+.dropdown.visible > .dropdown__menu {
+  pointer-events: auto;
+  opacity: 1;
+  transform: rotateX(0);
+}
+/* .dropdown.visible > .dropdown__menu {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+} */
+.dropdown__menu > li {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #7eceff;
+}
+.dropdown__menu > li:hover {
+  background-color: #3b647e;
 }
