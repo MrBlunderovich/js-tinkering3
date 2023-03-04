@@ -1,16 +1,17 @@
 // 'npm run start' in terminal starts webpack dev server
 
 import "./style.css";
+import SpinnerModule from "./SpinnerModule";
 
 const menuItems1 = ["Home", "Save", "Turn", "Return", "Extern", "Exit"];
 const menuItems2 = ["Not", "A", "Lot", "Going", "On", "Here"];
 
 document.addEventListener("click", handleClick);
 function handleClick(event) {
-  menuModule.expandDropdown(event);
+  MenuModule.expandDropdown(event);
 }
 
-const menuModule = (function () {
+const MenuModule = (function () {
   function appendDropdownMenu(items, target) {
     const fragment = document.createDocumentFragment();
     items.forEach((item) => {
@@ -46,5 +47,7 @@ const menuModule = (function () {
   return { appendDropdownMenu, closeDropdowns, expandDropdown };
 })();
 
-menuModule.appendDropdownMenu(menuItems1, document.querySelector(".menu1"));
-menuModule.appendDropdownMenu(menuItems2, document.querySelector(".menu2"));
+MenuModule.appendDropdownMenu(menuItems1, document.querySelector(".menu1"));
+MenuModule.appendDropdownMenu(menuItems2, document.querySelector(".menu2"));
+
+SpinnerModule.appendSpinner(document.querySelector("header"));
