@@ -1,10 +1,9 @@
 //
-const SpinnerModule = (function () {
-  function appendSpinner(target) {
-    const element = document.createElement("div");
-    const dynamicStyles = document.createElement("style");
+export function appendSpinner(target) {
+  const element = document.createElement("div");
+  const dynamicStyles = document.createElement("style");
 
-    const rules = `
+  const rules = `
       .spinner {
           margin-left: auto;
           position: relative;
@@ -43,11 +42,8 @@ const SpinnerModule = (function () {
         }
       `;
 
-    dynamicStyles.textContent = rules;
-    document.head.appendChild(dynamicStyles);
-    element.classList.add("spinner");
-    target.appendChild(element);
-  }
-  return { appendSpinner };
-})();
-export default SpinnerModule;
+  dynamicStyles.textContent = rules;
+  document.head.appendChild(dynamicStyles);
+  element.classList.add("spinner");
+  target.appendChild(element);
+}

@@ -22,42 +22,6 @@ header {
   padding: 0 5rem;
 }
 
-/* .spinner {
-  margin-left: auto;
-  position: relative;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
-  background-color: #d3faff;
-}
-.spinner::before,
-.spinner::after {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  margin-left: -1px;
-  display: block;
-  content: "";
-  width: 2px;
-  height: 2rem;
-  background-color: #223a49;
-  animation: clockwise 1s linear infinite;
-  transform-origin: center bottom;
-}
-.spinner::before {
-  height: 1rem;
-  background-color: #223a49;
-  animation: clockwise 2500ms linear infinite;
-  transform-origin: center bottom;
-}
-@keyframes clockwise {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} */
 .dropdown {
   position: relative;
   border: none;
@@ -90,11 +54,6 @@ header {
   opacity: 1;
   transform: rotateX(0);
 }
-/* .dropdown.visible > .dropdown__menu {
-  pointer-events: auto;
-  opacity: 1;
-  transform: translateY(0);
-} */
 .dropdown__menu > li {
   padding: 0.5rem 1rem;
   border-top: 1px solid #7eceff;
