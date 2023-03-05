@@ -1,8 +1,11 @@
 export function appendRingSpinner(target) {
   const element = document.createElement("div");
-  const dynamicStyles = document.createElement("style");
 
-  const rules = `
+  if (!document.querySelector('style[data-target="ring-spinner"]')) {
+    const dynamicStyles = document.createElement("style");
+    dynamicStyles.dataset.target = "ring-spinner";
+
+    const rules = `
         .ring-spinner {
             height: 50px;
   width: 50px;
@@ -21,8 +24,9 @@ export function appendRingSpinner(target) {
           }
         `;
 
-  dynamicStyles.textContent = rules;
-  document.head.appendChild(dynamicStyles);
+    dynamicStyles.textContent = rules;
+    document.head.appendChild(dynamicStyles);
+  }
   element.classList.add("ring-spinner");
   target.appendChild(element);
 }
@@ -31,9 +35,11 @@ export function showSpinnerBackdrop() {
   const backdrop = document.createElement("div");
   backdrop.classList.add("spinner-backdrop");
 
-  const dynamicStyles = document.createElement("style");
+  if (!document.querySelector('style[data-target="spinner-backdrop"]')) {
+    const dynamicStyles = document.createElement("style");
+    dynamicStyles.dataset.target = "spinner-backdrop";
 
-  const rules = `
+    const rules = `
     .spinner-backdrop{
       position: absolute;
       top: 0;
@@ -44,10 +50,11 @@ export function showSpinnerBackdrop() {
       justify-content: center;
       align-items: center;
     }
-        `;
+    `;
 
-  dynamicStyles.textContent = rules;
-  document.head.appendChild(dynamicStyles);
+    dynamicStyles.textContent = rules;
+    document.head.appendChild(dynamicStyles);
+  }
 
   appendRingSpinner(backdrop);
   document.body.appendChild(backdrop);
