@@ -1,10 +1,10 @@
 //
-export function appendSpinner(target) {
+export function appendClockSpinner(target) {
   const element = document.createElement("div");
   const dynamicStyles = document.createElement("style");
 
   const rules = `
-      .spinner {
+      .clock-spinner {
           margin-left: auto;
           position: relative;
           height: 3rem;
@@ -12,8 +12,8 @@ export function appendSpinner(target) {
           border-radius: 50%;
           background-color: #d3faff;
         }
-        .spinner::before,
-        .spinner::after {
+        .clock-spinner::before,
+        .clock-spinner::after {
           position: absolute;
           bottom: 1.5rem;
           left: 1.5rem;
@@ -26,7 +26,7 @@ export function appendSpinner(target) {
           animation: clockwise 1s linear infinite;
           transform-origin: center bottom;
         }
-        .spinner::before {
+        .clock-spinner::before {
           height: 1rem;
           background-color: #223a49;
           animation: clockwise 2500ms linear infinite;
@@ -44,6 +44,6 @@ export function appendSpinner(target) {
 
   dynamicStyles.textContent = rules;
   document.head.appendChild(dynamicStyles);
-  element.classList.add("spinner");
+  element.classList.add("clock-spinner");
   target.appendChild(element);
 }

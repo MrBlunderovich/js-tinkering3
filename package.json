@@ -21,5 +21,8 @@
   },
   "name": "js-tinkering3",
   "main": "webpack.config.js",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@mrblunderovich/femtoid": "^1.0.0"
+  }
 }
