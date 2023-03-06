@@ -1,4 +1,5 @@
 // 'npm run start' in terminal starts webpack dev server
+//
 
 import "./style.css";
 import { appendClockSpinner } from "./ClockSpinner";

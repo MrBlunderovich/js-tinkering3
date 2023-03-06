@@ -120,6 +120,7 @@ main {
   padding: 0.2rem 1rem 0 1.5rem;
 }
 .add-menu-item:active,
-.add-menu-item:hover {
+.add-menu-item:hover,
+.bottom-menu-btn:hover {
   background-color: #223a49;
 }
