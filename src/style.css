@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Teko&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
 * {
   box-sizing: border-box;
   font-family: inherit;
@@ -9,6 +10,8 @@
 body {
   background-color: #d3faff;
   font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 header {
   background-color: #7eceff;
@@ -17,12 +20,24 @@ header {
   border-bottom: 2px solid #223a49;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 5px;
-  padding: 0 5rem;
+  padding: 0 2rem;
+}
+.logo {
+  font-family: "Teko", sans-serif;
+  font-size: 3rem;
+  color: #223a49;
+}
+.header-menu-btn {
+  background-color: transparent;
+  border-radius: 3px;
+  border: 2px solid #223a49;
+  padding: 0.1rem;
+  font-size: 2rem;
 }
 
-.dropdown {
+/* .dropdown {
   position: relative;
   border: none;
   height: 3rem;
@@ -60,11 +75,51 @@ header {
 }
 .dropdown__menu > li:hover {
   background-color: #3b647e;
-}
+} */
 
 main {
+  height: 100%;
+}
+.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.bottom-menu-btn {
+  --diameter: 4rem;
+  font-size: 2.5rem;
+  height: var(--diameter);
+  width: var(--diameter);
+  border-radius: calc(var(--diameter) / 2);
+  border: none;
+  background-color: #3b647e;
+  color: #d3faff;
+  align-self: flex-end;
+}
+.bottom-menu-expanded {
+  width: 80vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  list-style-type: none;
+  font-size: 2rem;
+  font-family: "Teko", sans-serif;
+  color: #d3faff;
+}
+.add-menu-item {
+  text-align: left;
+  width: 100%;
+  background-color: #3b647e;
+  border-radius: 2rem;
+  padding: 0.2rem 1rem 0 1.5rem;
+}
+.add-menu-item:active,
+.add-menu-item:hover {
+  background-color: #223a49;
 }
