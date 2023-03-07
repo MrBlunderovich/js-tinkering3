@@ -32,6 +32,7 @@ header {
   font-family: "Teko", sans-serif;
   font-size: 3rem;
   color: #223a49;
+  cursor: pointer;
 }
 .header-menu-btn {
   background-color: transparent;
@@ -117,11 +118,13 @@ main {
   justify-content: center;
   align-items: stretch;
   list-style-type: none;
-  /* overflow-x: scroll;
-  overflow-y: hidden;
-  scrollbar-width: none; */
-  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+/* .scroll::-webkit-scrollbar {
+  display: none; } */
 .nav-menu-expanded::-webkit-scrollbar {
   background: transparent; /* Chrome/Safari/Webkit */
   width: 0;
