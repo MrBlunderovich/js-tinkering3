@@ -1,18 +1,22 @@
 //
+import TooLate from "./TooLate";
+
 const navbar = document.querySelector(".navbar");
 const main = document.querySelector("main");
 const menuItems2 = [
-  "Not",
-  "Aaaaaaaaaaaa",
-  "Lot",
-  "Going",
-  "Ooooon",
-  "Here",
-  "Yet",
+  "Uno",
+  "Dos",
+  "Tres",
+  "Cuatro",
+  "Cinco",
+  "Seis",
+  "Siete",
+  "Ocho",
+  "Nueve",
+  "Diez",
 ];
 
 export default function NavMenu(event) {
-  console.log("navMenu");
   if (navbar.matches(".expanded")) {
     if (event.target.matches(".nav-menu-item")) {
       selectMenuItem(event);
@@ -42,7 +46,9 @@ function selectMenuItem(event) {
   document.querySelectorAll(".nav-menu-item").forEach((item, index) => {
     item.classList.remove("active");
     if (item === event.target) {
-      main.textContent = index + 1;
+      //main.textContent = index + 1;
+      const indexPlus = index + 1;
+      TooLate(main, indexPlus);
     }
   });
   event.target.classList.add("active");

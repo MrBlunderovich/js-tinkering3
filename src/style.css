@@ -39,14 +39,20 @@ header {
   border: 2px solid #223a49;
   padding: 0.1rem;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 main {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 25rem;
+  line-height: 0.8;
+}
+.too-late {
+  font-size: 15rem;
+  text-align: center;
 }
 .fixed {
   position: fixed;
@@ -67,6 +73,7 @@ main {
   background-color: #3b647e;
   color: #d3faff;
   align-self: flex-end;
+  cursor: pointer;
 }
 .bottom-menu-expanded {
   width: 80vw;
@@ -116,6 +123,7 @@ main {
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .nav-menu-item:hover,
 .nav-menu-item.active {
