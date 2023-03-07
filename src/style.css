@@ -27,6 +27,7 @@ header {
   justify-content: space-between;
   gap: 5px;
   padding: 0 2rem;
+  z-index: 1;
 }
 .logo {
   font-family: "Teko", sans-serif;
@@ -114,8 +115,28 @@ main {
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #7eceff77;
+  background-color: #ace6ff;
+  position: relative;
 }
+.navbar::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 3rem;
+  content: "";
+  width: 2rem;
+  background: linear-gradient(to right, #ace6ffaa, #ace6ff00);
+}
+.navbar::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 3rem;
+  content: "";
+  width: 1rem;
+  background: linear-gradient(to left, #ace6ffaa, #ace6ff00);
+}
+
 .nav-menu-expanded {
   height: 3rem;
   display: flex;
