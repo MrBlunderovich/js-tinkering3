@@ -111,11 +111,14 @@ main {
 .bottom-menu-btn:hover {
   background-color: #223a49;
 }
-.nav-menu-expanded {
-  background-color: #7eceff77;
-  height: 3rem;
+.navbar {
   display: flex;
   justify-content: center;
+  background-color: #7eceff77;
+}
+.nav-menu-expanded {
+  height: 3rem;
+  display: flex;
   align-items: stretch;
   list-style-type: none;
   white-space: nowrap;
