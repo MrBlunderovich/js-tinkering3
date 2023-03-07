@@ -9,7 +9,7 @@
 }
 body {
   background-color: #d3faff;
-  font-family: "Roboto", sans-serif;
+  font-family: "Teko", sans-serif;
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -123,4 +123,24 @@ main {
 .add-menu-item:hover,
 .bottom-menu-btn:hover {
   background-color: #223a49;
+}
+.nav-menu-expanded {
+  background-color: #7eceff77;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  list-style-type: none;
+  overflow: scroll;
+}
+.nav-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem 0.8rem 1rem;
+  border-bottom: 3px solid transparent;
+  font-size: 1.5rem;
+}
+.nav-menu-item:hover {
+  /* box-shadow: 0 -3px 0 0 #223a49 inset; */
+  border-bottom: 3px solid #223a49;
 }
