@@ -55,7 +55,7 @@ main {
   text-align: center;
 }
 .animate-flash {
-  animation: flash 400ms ease-in-out 1;
+  animation: flash 450ms ease-in-out;
 }
 @keyframes flash {
   0% {
