@@ -54,6 +54,17 @@ main {
   font-size: 15rem;
   text-align: center;
 }
+.animate-flash {
+  animation: flash 400ms ease-in-out 1;
+}
+@keyframes flash {
+  0% {
+    background-color: #3b647e;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 .fixed {
   position: fixed;
   bottom: 0;

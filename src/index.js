@@ -7,6 +7,7 @@ import NavMenu from "./NavMenu";
 
 import femtoid from "@mrblunderovich/femtoid";
 console.log(femtoid());
+console.log(location);
 
 const menuItems1 = ["Home", "Save", "Turn", "Return", "Extern", "Exit"];
 
@@ -19,5 +20,7 @@ function handleClick(event) {
     event.target.closest(".navbar")
   ) {
     NavMenu(event);
+  } else if (event.target.matches(".logo")) {
+    location.reload();
   }
 }
