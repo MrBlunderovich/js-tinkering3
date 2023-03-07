@@ -12,8 +12,12 @@ body {
   font-family: "Teko", sans-serif;
   min-height: 100vh;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  color: #223a49;
 }
 header {
+  flex: 0 0 auto;
   background-color: #7eceff;
   height: 5rem;
   box-shadow: 0 0 5px 0 #223a49;
@@ -37,48 +41,12 @@ header {
   font-size: 2rem;
 }
 
-/* .dropdown {
-  position: relative;
-  border: none;
-  height: 3rem;
-  padding: 0 2rem;
-  background-color: #223a49;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  user-select: none;
-  cursor: pointer;
-  perspective: 1000px;
-}
-.dropdown__menu {
-  background-color: #223a49;
-  width: 100%;
-  list-style-type: none;
-  position: absolute;
-  left: 0;
-  top: 3rem;
-  box-shadow: 0 2px 15px 0 #00000077;
-  pointer-events: none;
-  opacity: 0;
-  transform: rotateX(-90deg);
-  transform-origin: top;
-  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-}
-.dropdown.visible > .dropdown__menu {
-  pointer-events: auto;
-  opacity: 1;
-  transform: rotateX(0);
-}
-.dropdown__menu > li {
-  padding: 0.5rem 1rem;
-  border-top: 1px solid #7eceff;
-}
-.dropdown__menu > li:hover {
-  background-color: #3b647e;
-} */
-
 main {
-  height: 100%;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rem;
 }
 .fixed {
   position: fixed;
@@ -131,16 +99,26 @@ main {
   justify-content: center;
   align-items: stretch;
   list-style-type: none;
-  overflow: scroll;
+  /* overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none; */
+  overflow: hidden;
+}
+.nav-menu-expanded::-webkit-scrollbar {
+  background: transparent; /* Chrome/Safari/Webkit */
+  width: 0;
+  height: 0;
 }
 .nav-menu-item {
   display: flex;
   align-items: center;
-  padding: 1rem 1rem 0.8rem 1rem;
+  padding: 1rem;
+  border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   font-size: 1.5rem;
 }
-.nav-menu-item:hover {
+.nav-menu-item:hover,
+.nav-menu-item.active {
   /* box-shadow: 0 -3px 0 0 #223a49 inset; */
   border-bottom: 3px solid #223a49;
 }
