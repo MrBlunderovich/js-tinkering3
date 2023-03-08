@@ -23,6 +23,7 @@
   "main": "webpack.config.js",
   "description": "",
   "dependencies": {
-    "@mrblunderovich/femtoid": "^1.0.0"
+    "@mrblunderovich/femtoid": "^1.0.0",
+    "qrcode": "^1.5.1"
   }
 }

@@ -8,7 +8,21 @@ export default function BottomMenu(event) {
     console.log(event.target.textContent);
     switch (event.target.textContent) {
       case "Clear screen":
-        document.querySelector("main").textContent = "";
+        document.querySelector("main").innerHTML = "";
+        break;
+      case "Show QR code":
+        const main = document.querySelector("main");
+        main.innerHTML = "";
+        const canvas = document.createElement("canvas");
+
+        const QRCode = require("qrcode");
+
+        QRCode.toCanvas(canvas, location.href, function (error) {
+          if (error) console.error(error);
+          console.log("QR success!");
+        });
+
+        main.appendChild(canvas);
         break;
 
       default:
