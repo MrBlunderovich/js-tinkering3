@@ -125,7 +125,7 @@ main {
   height: 3rem;
   content: "";
   width: 2rem;
-  background: linear-gradient(to right, #ace6ffaa, #ace6ff00);
+  background: linear-gradient(to right, #ace6ff, #ace6ff00);
 }
 .navbar::after {
   position: absolute;
@@ -134,7 +134,7 @@ main {
   height: 3rem;
   content: "";
   width: 1rem;
-  background: linear-gradient(to left, #ace6ffaa, #ace6ff00);
+  background: linear-gradient(to left, #ace6ff, #ace6ff00);
 }
 
 .nav-menu-expanded {

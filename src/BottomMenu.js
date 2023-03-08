@@ -1,11 +1,19 @@
 //
-const menuItems3 = ["Value", "Meaning", "Clarity", "Time", "Hope"];
+const menuItems3 = ["Lorem", "Ipsum", "Dolor", "Clear screen", "Show QR code"];
 
 export default function BottomMenu(event) {
   if (event.target.dataset.action === "add") {
     addMenu(event);
   } else if (event.target.classList.contains("add-menu-item")) {
     console.log(event.target.textContent);
+    switch (event.target.textContent) {
+      case "Clear screen":
+        document.querySelector("main").textContent = "";
+        break;
+
+      default:
+        break;
+    }
     collapseAddMenu(event);
   }
 }
