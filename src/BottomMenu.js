@@ -17,10 +17,19 @@ export default function BottomMenu(event) {
 
         const QRCode = require("qrcode");
 
-        QRCode.toCanvas(canvas, location.href, function (error) {
-          if (error) console.error(error);
-          console.log("QR success!");
-        });
+        QRCode.toCanvas(
+          canvas,
+          location.href,
+          {
+            scale: 8,
+            margin: 0,
+            color: { dark: "#223a49ff", light: "#ffffff00" },
+          },
+          function (error) {
+            if (error) console.error(error);
+            console.log("QR success!");
+          }
+        );
 
         main.appendChild(canvas);
         break;

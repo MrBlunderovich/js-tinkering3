@@ -124,7 +124,7 @@ main {
   top: 0;
   height: 3rem;
   content: "";
-  width: 2rem;
+  width: 1rem;
   background: linear-gradient(to right, #ace6ff, #ace6ff00);
 }
 .navbar::after {
@@ -133,7 +133,7 @@ main {
   top: 0;
   height: 3rem;
   content: "";
-  width: 1rem;
+  width: 2rem;
   background: linear-gradient(to left, #ace6ff, #ace6ff00);
 }
 
