@@ -1,5 +1,6 @@
 //
 import TooLate from "./TooLate";
+import femtoid from "@mrblunderovich/femtoid";
 
 const navbar = document.querySelector(".navbar");
 const main = document.querySelector("main");
@@ -37,6 +38,7 @@ function createNav(menuItems) {
   menuItems.forEach((item) => {
     const menuItem = document.createElement("li");
     menuItem.textContent = item;
+    menuItem.dataset.id = femtoid();
     menuItem.classList.add("nav-menu-item");
     menu.appendChild(menuItem);
   });
