@@ -43,6 +43,10 @@ header {
   font-size: 2rem;
   cursor: pointer;
 }
+.header-menu-btn.expanded {
+  box-shadow: 0 0 0 1px #223a49 inset;
+  background-color: #ace6ff;
+}
 
 main {
   flex: 1 1 auto;
@@ -67,6 +71,7 @@ main {
     background-color: transparent;
   }
 }
+
 .fixed {
   position: fixed;
   bottom: 0;
@@ -118,7 +123,8 @@ main {
   background-color: #ace6ff;
   position: relative;
 }
-.navbar::before {
+
+/* .navbar::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -135,7 +141,7 @@ main {
   content: "";
   width: 2rem;
   background: linear-gradient(to left, #ace6ff, #ace6ff00);
-}
+} */
 
 .nav-menu-expanded {
   height: 3rem;

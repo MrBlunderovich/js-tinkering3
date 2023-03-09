@@ -1,5 +1,5 @@
 //
-const menuItems3 = ["Lorem", "Ipsum", "Dolor", "Clear screen", "Show QR code"];
+const menuItems3 = ["Lorem", "Ipsum", "Clear screen", "Show QR code"];
 
 export default function BottomMenu(event) {
   if (event.target.dataset.action === "add") {
@@ -10,28 +10,9 @@ export default function BottomMenu(event) {
       case "Clear screen":
         document.querySelector("main").innerHTML = "";
         break;
+
       case "Show QR code":
-        const main = document.querySelector("main");
-        main.innerHTML = "";
-        const canvas = document.createElement("canvas");
-
-        const QRCode = require("qrcode");
-
-        QRCode.toCanvas(
-          canvas,
-          location.href,
-          {
-            scale: 8,
-            margin: 0,
-            color: { dark: "#223a49ff", light: "#ffffff00" },
-          },
-          function (error) {
-            if (error) console.error(error);
-            console.log("QR success!");
-          }
-        );
-
-        main.appendChild(canvas);
+        showQRCode();
         break;
 
       default:
@@ -39,6 +20,30 @@ export default function BottomMenu(event) {
     }
     collapseAddMenu(event);
   }
+}
+
+function showQRCode() {
+  const main = document.querySelector("main");
+  main.innerHTML = "";
+  const canvas = document.createElement("canvas");
+
+  const QRCode = require("qrcode");
+
+  QRCode.toCanvas(
+    canvas,
+    location.href,
+    {
+      scale: 8,
+      margin: 0,
+      color: { dark: "#223a49ff", light: "#ffffff00" },
+    },
+    function (error) {
+      if (error) console.error(error);
+      console.log("QR success!");
+    }
+  );
+
+  main.appendChild(canvas);
 }
 
 export function addMenu(event) {

@@ -21,10 +21,12 @@ export default function NavMenu(event) {
     if (event.target.matches(".nav-menu-item")) {
       selectMenuItem(event);
     } else {
+      event.target.classList.remove("expanded");
       navbar.classList.remove("expanded");
       navbar.innerHTML = "";
     }
   } else {
+    event.target.classList.add("expanded");
     navbar.classList.add("expanded");
     navbar.appendChild(createNav(menuItems2));
   }

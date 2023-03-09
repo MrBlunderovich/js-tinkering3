@@ -16,7 +16,7 @@ function handleClick(event) {
   if (event.target.closest(".fixed")) {
     BottomMenu(event);
   } else if (
-    event.target.matches(".header-menu-btn.left") ||
+    event.target.matches(".header-menu-btn.right") ||
     event.target.closest(".navbar")
   ) {
     NavMenu(event);
