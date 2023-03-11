@@ -5,6 +5,7 @@ const carouselButton = document.querySelector(".header-menu-btn.left");
 const menuItems = [
   { icon: "add", action: "add", label: "" },
   { icon: "skip_previous", action: "previous", label: "" },
+  { icon: "pause", action: "pause", label: "" },
   { icon: "skip_next", action: "next", label: "" },
   { icon: "close", action: "remove", label: "" },
 ];
@@ -36,6 +37,37 @@ export default function Carousel(event) {
         console.log("removing");
         removeImage();
         break;
+      case "play":
+      case "pause":
+        playPause(event);
+        break;
+      case "remove":
+        console.log("removing");
+        removeImage();
+        break;
+      case "remove":
+        console.log("removing");
+        removeImage();
+        break;
+
+      default:
+        break;
+    }
+  } else if (event.target.closest(".carousel__controls")) {
+    const action = event.target.dataset.action;
+    switch (action) {
+      case "selectImage":
+        console.log("select");
+        //addImage();
+        break;
+      case "back":
+        console.log("back");
+        moveSlide("backward");
+        break;
+      case "forward":
+        console.log("forward");
+        moveSlide("forward");
+        break;
 
       default:
         break;
@@ -44,47 +76,21 @@ export default function Carousel(event) {
   console.log("carouseling!");
 }
 
-/* function uploadFile() {
-  const fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = "image/*";
-  fileInput.style = "display:none";
-  fileInput.multiple = "multiple";
-  main.appendChild(fileInput);
-  fileInput.addEventListener("change", handleFileInputChange);
-  function handleFileInputChange(inputEvent) {
-    Array.from(inputEvent.target.files).forEach((newFile) => {
-      carouselFiles.push(newFile);
-    });
-    //carouselFiles.push(inputEvent.target.files[0]);
-    console.log(carouselFiles);
-
-    const file = carouselFiles[0];
-
-    const img = document.createElement("img");
-    img.classList.add("test-image");
-    img.file = file;
-
-    function readFile(file, destination) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        destination = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-
-    readFile(file, img.src);
-
-    //main.textContent = "";
-    //main.appendChild(img);
-    main.querySelector(".carousel").textContent = "";
-    main.querySelector(".carousel").appendChild(img);
-    setTimeout(() => console.log(img), 5000);
+function playPause(event) {
+  if (event.target.dataset.action === "play") {
+    console.log("play");
+    startSlideshow();
+    event.target.dataset.action = "pause";
+    event.target.dataset.icon = "pause";
+    event.target.textContent = "pause";
+  } else if (event.target.dataset.action === "pause") {
+    console.log("pause");
+    clearInterval(interval);
+    event.target.dataset.action = "play";
+    event.target.dataset.icon = "play_circle";
+    event.target.textContent = "play_circle";
   }
-  fileInput.click();
-
-  //fileInput.removeEventListener("change", handleFileInputChange);
-} */
+}
 
 function addImage() {
   carouselImages.push({
@@ -121,61 +127,47 @@ function addCarousel() {
   container.classList.add("carousel__container");
   container.style = `transform: translateX(0);`;
 
-  //addCarouselStyles();
-
   carousel.appendChild(container);
   carousel.appendChild(createControls());
   fillCarousel(container);
-  /* for (let imageItem of carouselImages) {
-    console.log(imageItem);
-    const image = document.createElement("img");
-    image.src = imageItem.url;
-    image.classList.add("carousel__image");
-    carousel.appendChild(image);
-  } */
-  /* const image = document.createElement("img");
-  image.src = carouselImages[0].url;
-  image.classList.add("carousel__image");
-  carousel.appendChild(image); */
 
   main.appendChild(carousel);
   addFooterNav();
 
-  interval = setInterval(() => slideshow(container), 5000);
+  //interval = setInterval(() => slideshow(), 5000);
+  //console.log({ interval });
+  startSlideshow();
 }
 
-/* function addCarouselStyles() {
-  if (!document.querySelector("style.carousel")) {
-    const carouselStyles = document.createElement("style");
-    carouselStyles.classList.add("carousel");
-    carouselStyles.textContent = `
-        .carousel {
-          font-size: 15rem;
-        }
-        `;
-    document.head.appendChild(carouselStyles);
-  }
-} */
+function startSlideshow() {
+  interval = setInterval(() => moveSlide(), 5000);
+}
 
-function slideshow(container) {
-  //const container = document.querySelector(".carousel__container");
+function moveSlide(direction = "forward") {
+  const container = document.querySelector(".carousel__container");
   let activeImageIndex = carouselImages.findIndex(
     (item) => item.isActive === true
   );
-  console.log({ activeImageIndex });
   carouselImages[activeImageIndex].isActive = false;
-  if (activeImageIndex < carouselImages.length - 1) {
-    activeImageIndex += 1;
+  if (direction === "forward") {
+    if (activeImageIndex < carouselImages.length - 1) {
+      activeImageIndex += 1;
+    } else {
+      activeImageIndex = 0;
+    }
   } else {
-    activeImageIndex = 0;
+    if (activeImageIndex > 0) {
+      activeImageIndex -= 1;
+    } else {
+      activeImageIndex = carouselImages.length - 1;
+    }
   }
+
   carouselImages[activeImageIndex].isActive = true;
-  console.log({ activeImageIndex });
   const currentWidth = container.offsetWidth;
   const containerMargin = currentWidth * activeImageIndex;
   container.style = `transform: translateX(-${containerMargin}px);`;
   const dotContainer = document.querySelector(".dot-container");
-  console.log(dotContainer);
   makeDots(dotContainer);
 }
 
@@ -183,8 +175,8 @@ function createControls() {
   const controls = document.createElement("div");
   controls.classList.add("carousel__controls");
   controls.innerHTML = `
-  <span class='material-icons-outlined control__item prev'>arrow_back_ios</span>
-  <span class='material-icons-outlined control__item next'>arrow_forward_ios</span>
+  <span class='material-icons-outlined control__item prev' data-action="back">arrow_back_ios</span>
+  <span class='material-icons-outlined control__item next' data-action="forward">arrow_forward_ios</span>
   `;
   const dotContainer = document.createElement("div");
   dotContainer.classList.add("dot-container");
@@ -204,19 +196,25 @@ function fillCarousel(container) {
     image.src = imageItem.url;
     image.classList.add("carousel__image");
     container.appendChild(image);
-    /* const dot = document.createElement("div");
-    dot.classList.add("dot");
-    if (imageItem.isActive) {
-      dot.classList.add("filled");
-    }
-    dotContainer.appendChild(dot); */
   }
   makeDots(dotContainer);
 }
 
 function makeDots(dotContainer) {
   dotContainer.innerHTML = "";
-  for (let imageItem of carouselImages) {
+  carouselImages.forEach((imageItem, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.dataset.index = index;
+    dot.dataset.action = "selectImage";
+    if (imageItem.isActive) {
+      dot.classList.add("filled");
+    } else {
+      dot.classList.remove("filled");
+    }
+    dotContainer.appendChild(dot);
+  });
+  /* for (let imageItem of carouselImages) {
     const dot = document.createElement("div");
     dot.classList.add("dot");
     if (imageItem.isActive) {
@@ -225,7 +223,7 @@ function makeDots(dotContainer) {
       dot.classList.remove("filled");
     }
     dotContainer.appendChild(dot);
-  }
+  } */
 }
 
 function addFooterNav() {
