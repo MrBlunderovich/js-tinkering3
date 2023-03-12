@@ -148,7 +148,9 @@ function moveSlide(direction = "forward") {
   let activeImageIndex = carouselImages.findIndex(
     (item) => item.isActive === true
   );
-  carouselImages[activeImageIndex].isActive = false;
+  if (carouselImages[activeImageIndex]) {
+    carouselImages[activeImageIndex].isActive = false;
+  }
   if (direction === "forward") {
     if (activeImageIndex < carouselImages.length - 1) {
       activeImageIndex += 1;

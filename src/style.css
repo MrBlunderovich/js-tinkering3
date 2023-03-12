@@ -243,5 +243,5 @@ main {
   background-color: #7eceff;
 }
 .carousel__image {
-  max-width: 100%;
+  width: 100%;
 }
