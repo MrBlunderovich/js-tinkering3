@@ -187,9 +187,12 @@ main {
   overflow: hidden;
 }
 .carousel__container {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   transition: transform ease-in-out 300ms;
+}
+.carousel__image {
+  width: 100%;
 }
 .carousel__controls {
   position: absolute;
@@ -239,9 +242,6 @@ main {
 }
 .dot.filled {
   background-color: #7eceff;
-}
-.carousel__image {
-  width: 100%;
 }
 
 .scale-on-hover {
