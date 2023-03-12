@@ -57,8 +57,8 @@ export default function Carousel(event) {
     const action = event.target.dataset.action;
     switch (action) {
       case "selectImage":
-        console.log("select");
-        //addImage();
+        console.log(`select ${+event.target.dataset.index + 1}`);
+        moveSlide(event.target.dataset.index);
         break;
       case "back":
         console.log("back");
@@ -143,6 +143,7 @@ function addCarousel() {
 }
 
 function startSlideshow() {
+  clearInterval(interval);
   interval = setInterval(() => moveSlide(), 5000);
 }
 
@@ -160,12 +161,16 @@ function moveSlide(direction = "forward") {
     } else {
       activeImageIndex = 0;
     }
-  } else {
+  } else if (direction === "backward") {
     if (activeImageIndex > 0) {
       activeImageIndex -= 1;
     } else {
       activeImageIndex = carouselImages.length - 1;
     }
+  } else {
+    activeImageIndex = +direction;
+    console.log({ direction });
+    startSlideshow();
   }
 
   carouselImages[activeImageIndex].isActive = true;
@@ -180,8 +185,8 @@ function createControls() {
   const controls = document.createElement("div");
   controls.classList.add("carousel__controls");
   controls.innerHTML = `
-  <span class='material-icons-outlined control__item prev' data-action="back">arrow_back_ios</span>
-  <span class='material-icons-outlined control__item next' data-action="forward">arrow_forward_ios</span>
+  <span class='material-icons-outlined control__item scale-on-hover prev' data-action="back">arrow_back_ios</span>
+  <span class='material-icons-outlined control__item scale-on-hover next' data-action="forward">arrow_forward_ios</span>
   `;
   const dotContainer = document.createElement("div");
   dotContainer.classList.add("dot-container");
@@ -209,7 +214,7 @@ function makeDots(dotContainer) {
   dotContainer.innerHTML = "";
   carouselImages.forEach((imageItem, index) => {
     const dot = document.createElement("div");
-    dot.classList.add("dot");
+    dot.classList.add("dot", "scale-on-hover");
     dot.dataset.index = index;
     dot.dataset.action = "selectImage";
     if (imageItem.isActive) {
@@ -236,7 +241,11 @@ function addFooterNav() {
   element.classList.add("rudder");
   menuItems.forEach((item) => {
     const menuItem = document.createElement("span");
-    menuItem.classList.add("material-icons-outlined", "rudder-item");
+    menuItem.classList.add(
+      "material-icons-outlined",
+      "rudder-item",
+      "scale-on-hover"
+    );
     menuItem.textContent = item.icon;
     menuItem.dataset.action = item.action;
     element.appendChild(menuItem);

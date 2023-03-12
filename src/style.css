@@ -211,8 +211,6 @@ main {
   justify-content: center;
   align-items: center;
   color: #7eceff;
-  padding: 0.5rem;
-  border-radius: 50%;
 }
 .control__item.prev {
   grid-column: 1;
@@ -244,4 +242,11 @@ main {
 }
 .carousel__image {
   width: 100%;
+}
+
+.scale-on-hover {
+  transition: transform 100ms ease-in-out;
+}
+.scale-on-hover:hover {
+  transform: scale(1.5);
 }
