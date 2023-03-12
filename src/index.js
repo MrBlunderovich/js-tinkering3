@@ -32,3 +32,5 @@ function handleClick(event) {
     location.reload();
   }
 }
+
+document.body.style = "";

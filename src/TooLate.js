@@ -1,4 +1,7 @@
 //
+
+import { collapseCarousel } from "./Carousel";
+
 export default function TooLate(target, number) {
   target.textContent = "";
   target.classList.remove("too-late");

@@ -1,4 +1,7 @@
 //
+
+import { collapseCarousel } from "./Carousel";
+
 const menuItems3 = ["Lorem", "Ipsum", "Clear screen", "Show QR code"];
 
 export default function BottomMenu(event) {
@@ -8,10 +11,12 @@ export default function BottomMenu(event) {
     console.log(event.target.textContent);
     switch (event.target.textContent) {
       case "Clear screen":
+        collapseCarousel();
         document.querySelector("main").innerHTML = "";
         break;
 
       case "Show QR code":
+        collapseCarousel();
         showQRCode();
         break;
 

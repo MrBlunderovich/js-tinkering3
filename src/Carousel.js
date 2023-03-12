@@ -111,7 +111,7 @@ function removeImage() {
   fillCarousel(container);
 }
 
-function collapseCarousel() {
+export function collapseCarousel() {
   clearInterval(interval);
   main.innerHTML = "";
   footer.innerHTML = "";

@@ -1,6 +1,7 @@
 //
 import TooLate from "./TooLate";
 import femtoid from "@mrblunderovich/femtoid";
+import { collapseCarousel } from "./Carousel";
 
 const navbar = document.querySelector(".navbar");
 const main = document.querySelector("main");
@@ -20,6 +21,7 @@ const menuItems2 = [
 export default function NavMenu(event) {
   if (navbar.matches(".expanded")) {
     if (event.target.matches(".nav-menu-item")) {
+      collapseCarousel();
       selectMenuItem(event);
     } else {
       event.target.classList.remove("expanded");
@@ -27,6 +29,7 @@ export default function NavMenu(event) {
       navbar.innerHTML = "";
     }
   } else {
+    collapseCarousel();
     event.target.classList.add("expanded");
     navbar.classList.add("expanded");
     navbar.appendChild(createNav(menuItems2));
