@@ -77,18 +77,24 @@ export default function Carousel(event) {
 }
 
 function playPause(event) {
-  if (event.target.dataset.action === "play") {
+  const target =
+    document.querySelector("[data-action='play']") ||
+    document.querySelector("[data-action='pause']");
+  if (event.target.dataset.action === "play" || event.type === "mouseleave") {
     console.log("play");
     startSlideshow();
-    event.target.dataset.action = "pause";
-    event.target.dataset.icon = "pause";
-    event.target.textContent = "pause";
-  } else if (event.target.dataset.action === "pause") {
+    target.dataset.action = "pause";
+    target.dataset.icon = "pause";
+    target.textContent = "pause";
+  } else if (
+    event.target.dataset.action === "pause" ||
+    event.type === "mouseenter"
+  ) {
     console.log("pause");
     clearInterval(interval);
-    event.target.dataset.action = "play";
-    event.target.dataset.icon = "play_circle";
-    event.target.textContent = "play_circle";
+    target.dataset.action = "play";
+    target.dataset.icon = "play_circle";
+    target.textContent = "play_circle";
   }
 }
 
@@ -135,6 +141,10 @@ function addCarousel() {
   fillCarousel(container);
 
   main.appendChild(carousel);
+
+  carousel.addEventListener("mouseenter", playPause);
+  carousel.addEventListener("mouseleave", playPause);
+
   addFooterNav();
 
   //interval = setInterval(() => slideshow(), 5000);
