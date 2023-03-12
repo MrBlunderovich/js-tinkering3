@@ -35,19 +35,19 @@ export default function Carousel(event) {
         break;
       case "remove":
         console.log("removing");
-        removeImage();
+        removeImage(); //slide forward if you've deleted current image
         break;
       case "play":
       case "pause":
         playPause(event);
         break;
-      case "remove":
-        console.log("removing");
-        removeImage();
+      case "previous":
+        console.log("previous");
+        moveSlide("backward");
         break;
-      case "remove":
-        console.log("removing");
-        removeImage();
+      case "next":
+        console.log("next");
+        moveSlide("forward");
         break;
 
       default:
@@ -102,7 +102,10 @@ function addImage() {
 }
 
 function removeImage() {
-  carouselImages.pop();
+  if (carouselImages.pop().isActive) {
+    //this intentionally mutates the array.
+    moveSlide();
+  }
   console.log(carouselImages);
   const container = document.querySelector(".carousel__container");
   fillCarousel(container);
