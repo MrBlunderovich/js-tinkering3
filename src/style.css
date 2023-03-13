@@ -188,10 +188,12 @@ main {
 }
 .carousel__container {
   min-width: 100%;
-  display: flex;
+  display: grid;
+  grid-auto-columns: 100%;
   transition: transform ease-in-out 300ms;
 }
 .carousel__image {
+  grid-row: 1;
   width: 100%;
 }
 .carousel__controls {
